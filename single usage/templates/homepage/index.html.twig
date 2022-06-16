@@ -1,0 +1,137 @@
+{% extends 'base.html.twig' %}
+
+    {% block body %}
+        <div class="container p-5">
+            <div class="row justify-content-center">
+                <div class="col col-md-auto">
+                    <form id="form_push_id" method="POST" action="">
+                        <div class="card">
+                            <div class="card-body">
+                                <div>
+                                    <h5 class="card-title">Добавить id в Реализованные проекты</h5>
+                                </div>
+                                <div class="p-5">
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text" id="resource-input">id: </span>
+                                        <input class="form-control" type="number" min="0" placeholder="ID ресурса" aria-describedby="resource-input" id="PushInputID" name="push_id" value="7737149">
+                                    </div>
+                                </div>
+                                <div class="row justify-content-center text-center">
+                                    <div>
+                                        <input class="btn btn-secondary btn-push-id" type="button" value="Добавить">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>        
+                </div>
+                <div class="col col-md-auto">
+                    <form id="form_delete_id" method="POST" action="">
+                        <div class="card">
+                            <div class="card-body">
+                                <div>
+                                    <h5 class="card-title">Удалить id из Реализованные проекты</h5>
+                                </div>
+                                <div class="p-5">
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text" id="resource-input">id: </span>
+                                        <input class="form-control" type="number" min="0" placeholder="ID ресурса" aria-describedby="resource-input" id="DeleteInputID" name="delete_id" value="7737149">
+                                    </div>
+                                </div>
+                                <div class="row justify-content-center text-center">
+                                    <div>
+                                        <input class="btn btn-secondary btn-delete-id" type="button" value="Удалить">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>        
+                </div>
+            </div>
+        </div>
+        <div class="toast-container position-fixed top-50 start-0 translate-middle-y p-3">
+            <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="true">
+                <div class="toast-header">
+                    <strong class="me-auto">Revotest</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div class="toast-body"></div>
+            </div>
+        </div>
+        <div class="modal fade" id="RevoSettingsModal" tabindex="-1" aria-labelledby="RevoSettingsModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <form id="set_revo_settings" method="POST" action="" autocomplete="off">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="RevoSettingsModalLabel">Modal title</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="mb-3">
+                                <label for="HostInput" class="form-label">Host:</label>
+                                <input type="text" class="form-control" id="HostInput" name="host" placeholder="remote host addr">
+                            </div>
+                            <div class="mb-3">
+                                <label for="UserInput" class="form-label">User:</label>
+                                <input type="text" class="form-control" id="UserInput" name="user" placeholder="username">
+                            </div>
+                            <div class="mb-3">
+                                <label for="PasswordInput" class="form-label">Password:</label>
+                                <input type="text" class="form-control" id="PasswordInput" name="password" placeholder="password">
+                            </div>
+                            <div class="mb-3">
+                                <label for="DatabaseInput" class="form-label">Database:</label>
+                                <input type="text" class="form-control" id="DatabaseInput" name="dbname" placeholder="database">
+                            </div>
+                            <div class="mb-3">
+                                <label for="PortInput" class="form-label">Port:</label>
+                                <input type="number" min="0" class="form-control" id="PortInput" name="port" placeholder="port">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary btn-revo-settings-apply">Save changes</button>
+                            <button type="button" class="btn btn-secondary btn-settings-close" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="FluidSettingsModal" tabindex="-1" aria-labelledby="FluidSettingsModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <form id="set_fluid_settings" method="POST" action="" autocomplete="off">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="FluidSettingsModalLabel">Modal title</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="mb-3">
+                                <label for="HostInput" class="form-label">Host:</label>
+                                <input type="text" class="form-control" id="HostInput" name="host" placeholder="remote host addr">
+                            </div>
+                            <div class="mb-3">
+                                <label for="UserInput" class="form-label">User:</label>
+                                <input type="text" class="form-control" id="UserInput" name="user" placeholder="username">
+                            </div>
+                            <div class="mb-3">
+                                <label for="PasswordInput" class="form-label">Password:</label>
+                                <input type="text" class="form-control" id="PasswordInput" name="password" placeholder="password">
+                            </div>
+                            <div class="mb-3">
+                                <label for="DatabaseInput" class="form-label">Database:</label>
+                                <input type="text" class="form-control" id="DatabaseInput" name="dbname" placeholder="database">
+                            </div>
+                            <div class="mb-3">
+                                <label for="PortInput" class="form-label">Port:</label>
+                                <input type="number" min="0" class="form-control" id="PortInput" name="port" placeholder="port">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary btn-fluid-settings-apply">Save changes</button>
+                            <button type="button" class="btn btn-secondary btn-settings-close" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    {% endblock %}
